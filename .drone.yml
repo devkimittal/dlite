@@ -8,7 +8,6 @@ pool:
 
 steps:
 - name: vet
-  image: golang:1.18
   commands:
   - go vet ./...
   volumes:
@@ -18,7 +17,6 @@ steps:
   - clone
 
 - name: test
-  image: golang:1.18
   commands:
   - go test -cover ./...
   volumes:
@@ -28,7 +26,6 @@ steps:
   - vet
 
 - name: check go.mod is up to date
-  image: golang:1.18
   commands:
   - cp go.mod go.mod.bak
   - go mod tidy
@@ -40,7 +37,6 @@ steps:
   - vet
 
 - name: golangci-lint
-  image: golangci/golangci-lint
   commands:
   - golangci-lint run --timeout 500s --new-from-rev=HEAD~
   volumes:
