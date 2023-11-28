@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_devkimittal_dlite_1701154490991-push-trigger-input-set
+  identifier: Build_devkimittal_dlite_1701154490991pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: CIEHackathonYAMLGen
+  pipeline:
+    identifier: Build_devkimittal_dlite_1701154490991
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
