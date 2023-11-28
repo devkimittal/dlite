@@ -1,0 +1,40 @@
+pipeline:
+  identifier: Build_devkimittal_dlite_1701154490991
+  name: Build dlite
+  orgIdentifier: default
+  projectIdentifier: CIEHackathonYAMLGen
+  properties:
+    ci:
+      codebase:
+        build: <+input>
+        connectorRef: account.devmittal
+        repoName: devkimittal/dlite
+  stages:
+    - stage:
+        identifier: build
+        name: build
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  identifier: gobuild
+                  name: go_build
+                  spec:
+                    command: go build
+                  timeout: ""
+                  type: Run
+              - step:
+                  identifier: gotest
+                  name: go_test
+                  spec:
+                    command: go test -v ./...
+                  timeout: ""
+                  type: Run
+          platform:
+            arch: Amd64
+            os: Linux
+          runtime:
+            spec: {}
+            type: Cloud
+        type: CI
